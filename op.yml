@@ -9,7 +9,6 @@ inputs:
     string:
       constraints: { minLength: 1 }
       description: name of the package
-      default: .
 outputs:
   srcDir:
     dir:
