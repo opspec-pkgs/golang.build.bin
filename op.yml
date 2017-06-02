@@ -1,0 +1,22 @@
+name: github.com/opspec-pkgs/golang1.8.build
+description: builds a golang 1.8 package
+inputs:
+  srcDir:
+    dir:
+      description: directory containing the packages source code; external deps must be vendored
+  pkgName:
+    string:
+      constraints: { minLength: 1 }
+      description: name of the package
+outputs:
+  srcDir:
+    dir:
+      description: the cloned git repo
+run:
+  container:
+    cmd: [ /cmd.sh ]
+    dirs:
+      /src: srcDir
+    files:
+      /cmd.sh:
+    image: { ref: 'golang:1.8' }
