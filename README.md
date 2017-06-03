@@ -1,5 +1,5 @@
 # problem statement
-builds a bin from golang src code
+builds a binary from golang src code
 
 # example usage
 
