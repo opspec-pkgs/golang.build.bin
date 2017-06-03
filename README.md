@@ -1,27 +1,36 @@
 # problem statement
-builds a golang 1.8 package
+builds a golang package
 
 # example usage
 
-> note: in examples, VERSION represents a version of the golang1.8.build pkg
+> note: in examples, VERSION represents a version of the golang.build pkg
 
 ## install
 
 ```shell
-opctl pkg install github.com/opspec-pkgs/golang1.8.build#VERSION
+opctl pkg install github.com/opspec-pkgs/golang.build#VERSION
 ```
 
 ## run
 
 ```
-opctl run github.com/opspec-pkgs/golang1.8.build#VERSION
+opctl run github.com/opspec-pkgs/golang.build#VERSION
 ```
 
 ## compose
 
 ```yaml
 op:
-  pkg: { ref: github.com/opspec-pkgs/golang1.8.build#VERSION }
-  inputs: { srcDir, pkgName }
-  outputs: { srcDir }
+  pkg: { ref: github.com/opspec-pkgs/golang.build#VERSION }
+  inputs: 
+    srcDir:
+    baseImport:
+    import:
+    # begin optional
+    goVersion:
+    GOOS:
+    GOARCH
+    CGO_ENABLED
+    # end optional
+  outputs: { bin }
 ```
