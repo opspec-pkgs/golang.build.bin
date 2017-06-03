@@ -1,6 +1,11 @@
 #!/usr/bin/env sh
 
-ln -s /src "$pkgName"
+echo "linking paths"
+basePath="${GOPATH}/src/${baseImport}"
+mkdir -p $(dirname "$basePath")
+ln -sv /src "$basePath" > /dev/null
 
-cd "$pkgName"
-go build
+echo "building"
+go build -a -o _bin "$import"
+
+cat _bin > pkgBin
