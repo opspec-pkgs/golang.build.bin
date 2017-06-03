@@ -29,8 +29,8 @@ op:
     # begin optional
     goVersion:
     GOOS:
-    GOARCH
-    CGO_ENABLED
+    GOARCH:
+    CGO_ENABLED:
     # end optional
   outputs: { bin }
 ```
