@@ -26,7 +26,7 @@ inputs:
       default: amd64
   CGO_ENABLED:
     number:
-      constraints: { enum:[0,1] }
+      constraints: { enum: [0, 1] }
       description: whether to allow dynamic c lib imports; see https://golang.org/doc/install/source#ccompiler
       default: 0
 outputs:
