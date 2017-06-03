@@ -1,23 +1,50 @@
-name: github.com/opspec-pkgs/golang1.8.build
-description: builds a golang 1.8 package
+name: github.com/opspec-pkgs/golang.build
+description: builds a golang package
 inputs:
   srcDir:
     dir:
       description: directory containing the packages source code; external deps must be vendored
       default: .
-  pkgName:
+  baseImport:
     string:
       constraints: { minLength: 1 }
-      description: name of the package
+      description: base import path of the package; usually 'git.host/org/repo'
+  import:
+    string:
+      description: import path of the package (may be same as baseImport or descendant)
+  goVersion:
+    number:
+      description: version of go to build
+      default: 1.8
+  GOOS:
+    string:
+      description: OS to compile bin against; see https://golang.org/doc/install/source#environment for supported values
+      default: linux
+  GOARCH:
+    string:
+      description: Arch to compile bin against; see https://golang.org/doc/install/source#environment for supported values
+      default: amd64
+  CGO_ENABLED:
+    number:
+      constraints: { enum:[0,1] }
+      description: whether to allow dynamic c lib imports; see https://golang.org/doc/install/source#ccompiler
+      default: 0
 outputs:
-  srcDir:
-    dir:
-      description: the cloned git repo
+  bin:
+    file:
+      description: the built bin
 run:
   container:
     cmd: [ /cmd.sh ]
     dirs:
       /src: srcDir
+    envVars:
+      baseImport:
+      import:
+      GOOS:
+      GOARCH:
     files:
       /cmd.sh:
-    image: { ref: 'golang:1.8' }
+      /pkgBin: bin
+    image: { ref: 'golang:$(goVersion)' }
+    workDir: /
