@@ -1,4 +1,4 @@
-name: github.com/opspec-pkgs/golang.build-bin
+name: github.com/opspec-pkgs/golang.build.bin
 description: builds a bin from golang src code
 inputs:
   srcDir:
