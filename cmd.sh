@@ -1,9 +1,8 @@
 #!/usr/bin/env sh
 
-echo "linking paths"
 basePath="${GOPATH}/src/${baseImport}"
 mkdir -p $(dirname "$basePath")
-ln -sv /src "$basePath" > /dev/null
+cp -rf /srcDir "$basePath"
 
 echo "building"
 go build -a -o _bin "$import"
