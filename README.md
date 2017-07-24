@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/opspec-pkgs/golang.build.bin.svg?branch=master)](https://travis-ci.org/opspec-pkgs/golang.build.bin)
+
 # Problem statement
 builds a binary from golang src code
 
