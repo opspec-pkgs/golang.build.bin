@@ -37,7 +37,7 @@ run:
   container:
     cmd: [ /cmd.sh ]
     dirs:
-      /src: srcDir
+      /src: $(srcDir)
     envVars:
       baseImport:
       import:
@@ -45,6 +45,6 @@ run:
       GOARCH:
     files:
       /cmd.sh:
-      /pkgBin: bin
+      /pkgBin: $(bin)
     image: { ref: 'golang:$(goVersion)' }
     workDir: /
