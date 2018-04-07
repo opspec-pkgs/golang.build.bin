@@ -13,9 +13,9 @@ inputs:
     string:
       description: import path of the package (may be same as baseImport or descendant)
   goVersion:
-    number:
+    string:
       description: version of go to build
-      default: 1.8
+      default: 1.10
   GOOS:
     string:
       description: OS to compile bin against; see https://golang.org/doc/install/source#environment for supported values
