@@ -15,22 +15,23 @@ the op uses [![opspec 0.1.5](https://img.shields.io/badge/opspec-0.1.5-brightgre
 ## Install
 
 ```shell
-opctl op install github.com/opspec-pkgs/golang.build.bin#1.1.0
+opctl op install github.com/opspec-pkgs/golang.build.bin#1.2.0
 ```
 
 ## Run
 
 ```
-opctl run github.com/opspec-pkgs/golang.build.bin#1.1.0
+opctl run github.com/opspec-pkgs/golang.build.bin#1.2.0
 ```
 
 ## Compose
 
 ```yaml
 op:
-  ref: github.com/opspec-pkgs/golang.build.bin#1.1.0
+  ref: github.com/opspec-pkgs/golang.build.bin#1.2.0
   inputs:
     CGO_ENABLED:
+    GOFLAGS:
     baseImport:
     import:
     # params w/ default

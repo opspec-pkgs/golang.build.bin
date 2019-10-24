@@ -5,6 +5,12 @@ All notable changes will be documented in this file in accordance with
 
 ## \[Unreleased]
 
+## \[1.2.0] - 2019-10-23
+
+### Added
+
+- GOFLAGS input
+
 ## \[1.1.0] - 2018-03-07
 
 ### Added
