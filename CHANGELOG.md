@@ -5,6 +5,20 @@ All notable changes will be documented in this file in accordance with
 
 ## \[Unreleased]
 
+## \[2.0.0] - 2019-10-25
+
+### Added
+
+- `name` and `path` input
+- `srcDir` output
+
+### Changed
+
+- performance increase due to no longer copying src & dst binary
+
+### Removed
+- `bin` output
+
 ## \[1.2.0] - 2019-10-23
 
 ### Added

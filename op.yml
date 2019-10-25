@@ -5,13 +5,17 @@ inputs:
     dir:
       description: directory containing the packages source code; external deps must be vendored
       default: .
-  baseImport:
+  name:
     string:
-      constraints: { minLength: 1 }
-      description: base import path of the package; usually 'git.host/org/repo'
-  import:
+      description: name of the bin file to output
+      constraints:
+        minLength: 1
+  path:
     string:
-      description: import path of the package (may be same as baseImport or descendant)
+      description: relative path (from srcDir) of the pkg to build
+      default: .
+      constraints:
+        pattern: ^\.
   goVersion:
     string:
       description: version of go to build
@@ -27,30 +31,26 @@ inputs:
   GOFLAGS:
     string:
       description: FLAGS to compile bin with; see https://golang.org/doc/install/source#environment for supported values
+      default: -mod=vendor 
   CGO_ENABLED:
     number:
       constraints: { enum: [0, 1] }
       description: whether to allow dynamic c lib imports; see https://golang.org/doc/install/source#ccompiler
       default: 0
 outputs:
-  bin:
-    file:
+  srcDir:
+    dir:
       description: the built bin
-version: 1.2.0
+version: 2.0.0
 run:
   container:
-    cmd: [ /cmd.sh ]
+    cmd: [go, build, -o, $(name), $(path)]
     dirs:
       /src: $(srcDir)
     envVars:
-      baseImport:
       CGO_ENABLED:
-      import:
       GOOS:
       GOARCH:
       GOFLAGS:
-    files:
-      /cmd.sh:
-      /pkgBin: $(bin)
     image: { ref: 'golang:$(goVersion)' }
-    workDir: /
+    workDir: /src
